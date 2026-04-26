@@ -1,0 +1,39 @@
+prometheus.exporter.snmp "snmp_exporter" {
+  config_file    = "/etc/alloy/snmp.yml"
+  target "udmse" {
+    address      = "[Unifi UDM IP Address]"
+    module       = "unifi_udmse"
+    auth         = "unifi_v2"
+    walk_params  = "private"
+    labels       = {
+      "env"      = "prod",
+      "device"   = "udmse",
+      "role"     = "router",
+    }
+  }
+  target "unas_pro4" {
+    address      = "[Unifi NAS IP address]"
+    module       = "unifi_unas_pro4"
+    auth         = "unifi_v2"
+    walk_params  = "private"
+    labels       = {
+      "env"      = "prod",
+      "device"   = "unas_pro4",
+      "role"     = "nas",
+    }
+  }
+  walk_param "private" {
+    retries = 2
+    timeout = "10s"
+  }
+}
+
+
+prometheus.scrape "snmp" {
+    targets    = prometheus.exporter.snmp.snmp_exporter.targets
+    forward_to = [prometheus.remote_write.mimir.receiver]
+
+    scrape_interval = "15s"
+    scrape_timeout  = "10s"
+    job_name        = "snmp"
+}
