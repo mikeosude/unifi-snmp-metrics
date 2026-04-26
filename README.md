@@ -33,10 +33,3 @@ Found a new OID? Have a different UniFi device model? I’d love to include your
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-***
-
-### Pro-Tips for your `README.md`:
-* **Add a Screenshot:** If you have a Grafana dashboard showing these metrics, take a screenshot of it and add it to a `/images` folder in your repo. Add `![Dashboard Snapshot](images/dashboard.png)` to the README. It’s the single most effective way to make people star your repo.
-* **Be Specific:** In the "Quick Start" section, if you have a sample `snmp.yml` configuration snippet, include it in a code block. Users love "copy-paste-ready" documentation.
-* **Badges:** You can use [Shields.io](https://shields.io/) to add more badges (like your programming language or tool versions) to make the header look more professional.
